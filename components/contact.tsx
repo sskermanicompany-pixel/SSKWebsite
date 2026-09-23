@@ -15,70 +15,71 @@ export function Contact() {
           <SectionHeading
             id="contact-heading"
             eyebrow="Contact"
-            title="We welcome a considered conversation."
-            description="Phone, email, address, and location are placeholders. No live coordinates or contact details have been published yet."
+            title="Connect with SSK."
+            description="Speak with SSK about foundry and casting requirements, machine manufacturing, or material supply."
           />
           <dl className="mt-10 space-y-6 text-sm">
             <div>
               <dt className="tracking-[0.16em] text-accent uppercase">Phone</dt>
-              <dd className="mt-1 text-base text-navy">{contact.phone.label}</dd>
+              <dd className="mt-1 text-base text-navy">
+                <a href={contact.phone.href} className="transition-colors hover:text-accent">
+                  {contact.phone.label}
+                </a>
+              </dd>
               <dd className="text-muted">{contact.phone.note}</dd>
             </div>
             <div>
               <dt className="tracking-[0.16em] text-accent uppercase">Email</dt>
-              <dd className="mt-1 text-base text-navy">{contact.email.label}</dd>
+              <dd className="mt-1 text-base text-navy">
+                <a href={contact.email.href} className="transition-colors hover:text-accent">
+                  {contact.email.label}
+                </a>
+              </dd>
               <dd className="text-muted">{contact.email.note}</dd>
             </div>
             <div>
-              <dt className="tracking-[0.16em] text-accent uppercase">
-                Address
-              </dt>
+              <dt className="tracking-[0.16em] text-accent uppercase">Location</dt>
               <dd className="mt-1 text-base text-navy">
-                {contact.address.label}
-              </dd>
-              <dd className="text-muted">{contact.address.note}</dd>
-            </div>
-            <div>
-              <dt className="tracking-[0.16em] text-accent uppercase">
-                Location
-              </dt>
-              <dd className="mt-1 text-base text-navy">
-                {contact.location.label}
+                <a
+                  href={contact.location.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-accent"
+                >
+                  {contact.location.label}
+                </a>
               </dd>
               <dd className="text-muted">{contact.location.note}</dd>
             </div>
           </dl>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#contact"
+              href={contact.location.href}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center justify-center bg-navy px-5 py-3 text-sm text-paper transition-colors hover:bg-accent hover:text-navy"
             >
-              Contact Us
+              View Location
             </a>
-            <button
-              type="button"
-              disabled
-              className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm text-muted"
-              aria-label="Phone number placeholder"
+            <a
+              href={contact.phone.href}
+              className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm text-navy transition-colors hover:border-accent hover:text-accent"
             >
               <IconPhone />
               Phone
-            </button>
-            <button
-              type="button"
-              disabled
-              className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm text-muted"
-              aria-label="Email address placeholder"
+            </a>
+            <a
+              href={contact.email.href}
+              className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm text-navy transition-colors hover:border-accent hover:text-accent"
             >
               <IconMail />
               Email
-            </button>
+            </a>
           </div>
         </div>
         <div
           className="relative min-h-80 overflow-hidden border border-line bg-paper"
-          aria-label="Map placeholder. Coordinates to be provided."
-          role="img"
+          aria-label="SSK location map link"
         >
           <div
             className="absolute inset-0 opacity-40"
@@ -94,12 +95,19 @@ export function Contact() {
               Location
             </p>
             <p className="mt-3 font-display text-3xl text-navy">
-              Map placeholder
+              SSK location
             </p>
             <p className="mt-3 max-w-xs text-sm leading-6 text-muted">
-              An elegant stand-in until SSK provides an address and map
-              coordinates.
+              Open the supplied Google Maps link to view the SSK location.
             </p>
+            <a
+              href={contact.location.href}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex border border-navy px-5 py-3 text-sm text-navy transition-colors hover:bg-navy hover:text-paper"
+            >
+              Open in Google Maps
+            </a>
           </div>
         </div>
       </Container>

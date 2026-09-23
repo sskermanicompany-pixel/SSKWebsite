@@ -13,10 +13,10 @@ export function Customers() {
         <SectionHeading
           id="customers-heading"
           eyebrow="Customers"
-          title="Organizations we work with."
-          description="Client names below are placeholders. Do not treat them as current or past SSK customers."
+          title="Built around foundry requirements."
+          description="SSK’s primary customers are foundries and casting companies."
         />
-        <ul className="mt-14 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3">
+        <ul className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2">
           {customers.map((customer) => (
             <li
               key={customer}

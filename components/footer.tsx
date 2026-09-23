@@ -1,5 +1,5 @@
 import { Logo } from "@/components/logo";
-import { contact, navItems, site, socialLinks } from "@/lib/site";
+import { contact, navItems, site } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -33,26 +33,26 @@ export function Footer() {
             Contact
           </p>
           <ul className="mt-4 space-y-2 text-sm text-paper/80">
-            <li>{contact.phone.label}</li>
-            <li>{contact.email.label}</li>
-            <li>{contact.address.label}</li>
-            <li>{contact.location.label}</li>
-          </ul>
-          <p className="mt-6 text-xs tracking-[0.2em] text-accent uppercase">
-            Social
-          </p>
-          <ul className="mt-4 flex flex-wrap gap-4 text-sm">
-            {socialLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className="text-paper/80 transition-colors hover:text-accent"
-                  aria-label={`${link.label} profile placeholder`}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a href={contact.phone.href} className="transition-colors hover:text-accent">
+                {contact.phone.label}
+              </a>
+            </li>
+            <li>
+              <a href={contact.email.href} className="transition-colors hover:text-accent">
+                {contact.email.label}
+              </a>
+            </li>
+            <li>
+              <a
+                href={contact.location.href}
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-accent"
+              >
+                {contact.location.label}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -61,7 +61,7 @@ export function Footer() {
           <p>
             © 2026 {site.name}. All rights reserved.
           </p>
-          <p>Placeholder contact and client details pending confirmation.</p>
+          <p>Foundry solutions by SSK.</p>
         </div>
       </div>
     </footer>

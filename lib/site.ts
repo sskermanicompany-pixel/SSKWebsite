@@ -1,10 +1,9 @@
 export const site = {
   name: "SSK",
-  tagline: "Precision. Quality. Reliability.",
+  tagline: "Foundry solutions with precision.",
   description:
-    "SSK is a professional organization dedicated to delivering work of lasting quality. We combine disciplined process with thoughtful innovation.",
+    "SSK serves foundries and casting companies with mold making, pattern making, foundry raw materials, and core shooter machine manufacturing.",
 };
-
 export const navItems = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
@@ -16,56 +15,50 @@ export const navItems = [
 
 export const services = [
   {
-    title: "Service One",
+    title: "Mold Making & Pattern Making",
     description:
-      "A concise placeholder for a core offering. Replace this copy with SSK’s actual service description.",
+      "Mold and pattern making for foundry and casting applications, with careful attention to production requirements.",
   },
   {
-    title: "Service Two",
+    title: "Foundry Raw Material Supply",
     description:
-      "A concise placeholder for a complementary capability. Update with verified company information.",
+      "Raw material supply for foundry operations and casting workflows.",
   },
   {
-    title: "Service Three",
+    title: "Core Shooter Machine Manufacturing",
     description:
-      "A concise placeholder for advisory or delivery work. Keep this text aligned with real services.",
-  },
-  {
-    title: "Service Four",
-    description:
-      "A concise placeholder for ongoing support. Substitute with SSK’s confirmed offering when available.",
+      "Manufacturing core shooter machines for foundry production, including Gold Box and Hot Box models.",
   },
 ] as const;
 
 export const projects = [
   {
-    title: "Project Sample A",
-    category: "Category placeholder",
+    title: "Foundry production equipment",
+    category: "Machine manufacturing",
     description:
-      "An illustrative work sample. Replace with a real project title, category, and description.",
+      "A view from SSK’s core shooter machine manufacturing work.",
+    image: "/images/gallery/IMG_20230625_155959.jpg",
+    alt: "SSK foundry production equipment",
   },
   {
-    title: "Project Sample B",
-    category: "Category placeholder",
+    title: "Core shooter machine detail",
+    category: "Core shooter machines",
     description:
-      "An illustrative work sample. Do not treat this as a completed SSK engagement.",
+      "Equipment imagery from SSK’s available work gallery.",
+    image: "/images/gallery/IMG_20230625_160057.jpg",
+    alt: "SSK core shooter machine detail",
   },
   {
-    title: "Project Sample C",
-    category: "Category placeholder",
+    title: "Foundry workspace",
+    category: "Work samples",
     description:
-      "An illustrative work sample. Update with approved photography and project details.",
+      "An authentic SSK gallery image from the foundry environment.",
+    image: "/images/gallery/IMG_20230625_163355.jpg",
+    alt: "SSK foundry workspace",
   },
 ] as const;
 
-export const customers = [
-  "Client A",
-  "Client B",
-  "Client C",
-  "Client D",
-  "Client E",
-  "Client F",
-] as const;
+export const customers = ["Foundries", "Casting companies"] as const;
 
 export const values = [
   {
@@ -92,25 +85,18 @@ export const values = [
 
 export const contact = {
   phone: {
-    label: "[Phone number]",
-    note: "To be provided",
+    label: "09214149469",
+    href: "tel:09214149469",
+    note: "Call SSK",
   },
   email: {
-    label: "[Email address]",
-    note: "To be provided",
-  },
-  address: {
-    label: "[Street address]",
-    note: "To be provided",
+    label: "sskermani@gmail.com",
+    href: "mailto:sskermani@gmail.com",
+    note: "Email SSK",
   },
   location: {
-    label: "[City, Country]",
-    note: "To be provided",
+    label: "Open location in Google Maps",
+    href: "https://maps.app.goo.gl/oupkcFeZDfYTZr2y5",
+    note: "SSK location",
   },
 };
-
-export const socialLinks = [
-  { label: "LinkedIn", href: "#contact" },
-  { label: "X", href: "#contact" },
-  { label: "Instagram", href: "#contact" },
-] as const;

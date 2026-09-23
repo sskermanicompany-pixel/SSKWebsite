@@ -27,20 +27,20 @@ export function Hero() {
       <Container className="relative grid min-h-[34rem] items-center py-24 md:min-h-[40rem] md:py-32">
         <div className="max-w-3xl">
           <p className="animate-fade-up text-xs font-medium tracking-[0.28em] text-accent uppercase">
-            SSK
+            Foundry solutions
           </p>
           <h1
             id="hero-heading"
             className="animate-fade-up-delay mt-5 font-display text-4xl leading-[1.12] font-medium tracking-tight text-balance sm:text-5xl md:text-6xl"
           >
-            Built on precision.
+            Built for foundries.
             <br />
-            Defined by quality.
+            Made with precision.
           </h1>
           <p className="animate-fade-up-delay-2 mt-6 max-w-xl text-base leading-7 text-pretty text-paper/75 sm:text-lg">
-            SSK is a professional organization committed to careful work,
-            reliable delivery, and considered innovation. This introduction is
-            a placeholder until official company copy is supplied.
+            SSK provides mold making, pattern making, foundry raw materials,
+            and core shooter machine manufacturing for foundries and casting
+            companies.
           </p>
           <div className="animate-fade-up-delay-2 mt-10 flex flex-col gap-3 sm:flex-row">
             <a
@@ -53,7 +53,7 @@ export function Hero() {
               href="#projects"
               className="inline-flex items-center justify-center border border-paper/25 px-6 py-3 text-sm tracking-wide text-paper transition-colors hover:border-accent hover:text-accent"
             >
-              Explore Our Work
+              View Work Samples
             </a>
           </div>
         </div>

@@ -8,25 +8,21 @@ export function About() {
         <SectionHeading
           id="about-heading"
           eyebrow="About SSK"
-          title="A considered approach to professional work."
+          title="Practical solutions for foundry production."
         />
         <div className="space-y-6 text-base leading-7 text-muted">
           <p>
-            SSK exists to deliver work that holds up under scrutiny—planned
-            with care, executed with discipline, and finished to a standard
-            that earns trust. The details below are placeholders and should be
-            replaced with verified company history, sector focus, and leadership
-            information.
+            SSK serves foundries and casting companies with focused products
+            and services for mold, pattern, material, and core production
+            requirements.
           </p>
           <p>
-            Quality, precision, reliability, and innovation guide how we
-            operate. We treat each engagement as a long-term relationship,
-            measuring success by clarity of process as much as by the
-            completed result.
+            Our offering includes mold making and pattern making, foundry raw
+            material supply, and the manufacture of core shooter machines.
           </p>
           <p className="border-l border-accent pl-5 text-charcoal">
-            Placeholder statement: SSK partners with clients who value
-            craftsmanship, accountability, and quiet excellence.
+            Every SSK-manufactured machine is provided with a 6-month company
+            warranty.
           </p>
         </div>
       </Container>

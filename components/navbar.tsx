@@ -45,10 +45,10 @@ export function Navbar() {
           ))}
         </nav>
         <a
-          href="#contact"
+          href="tel:09214149469"
           className="hidden border border-navy bg-navy px-4 py-2 text-sm tracking-wide text-paper transition-colors hover:border-accent hover:bg-accent lg:inline-flex"
         >
-          Contact Us
+          Call SSK
         </a>
         <button
           type="button"
@@ -83,11 +83,11 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="tel:09214149469"
               className="mt-3 inline-flex items-center justify-center border border-navy bg-navy px-4 py-3 text-sm text-paper"
               onClick={() => setOpen(false)}
             >
-              Contact Us
+              Call SSK
             </a>
           </nav>
         </div>

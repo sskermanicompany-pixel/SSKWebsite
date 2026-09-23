@@ -4,7 +4,6 @@ import { Customers } from "@/components/customers";
 import { Hero } from "@/components/hero";
 import { Projects } from "@/components/projects";
 import { Services } from "@/components/services";
-import { Values } from "@/components/values";
 
 export default function Home() {
   return (
@@ -14,7 +13,6 @@ export default function Home() {
       <Services />
       <Projects />
       <Customers />
-      <Values />
       <Contact />
     </main>
   );
