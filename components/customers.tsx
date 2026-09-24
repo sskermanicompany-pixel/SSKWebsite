@@ -1,8 +1,12 @@
+"use client";
+
 import { Container } from "@/components/container";
 import { SectionHeading } from "@/components/section-heading";
-import { customers } from "@/lib/site";
+import { useLanguage } from "@/components/language-provider";
 
 export function Customers() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="customers"
@@ -12,15 +16,15 @@ export function Customers() {
       <Container>
         <SectionHeading
           id="customers-heading"
-          eyebrow="Customers"
-          title="Built around foundry requirements."
-          description="SSK’s primary customers are foundries and casting companies."
+          eyebrow={t.customers.eyebrow}
+          title={t.customers.title}
+          description={t.customers.description}
         />
         <ul className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2">
-          {customers.map((customer) => (
+          {t.customers.items.map((customer) => (
             <li
               key={customer}
-              className="flex min-h-24 items-center justify-center bg-paper px-4 py-6 text-sm tracking-[0.16em] text-charcoal uppercase sm:min-h-28"
+              className="flex min-h-24 items-center justify-center bg-paper px-4 py-6 text-sm font-medium text-charcoal sm:min-h-28"
             >
               {customer}
             </li>

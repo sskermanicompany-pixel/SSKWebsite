@@ -1,9 +1,14 @@
+"use client";
+
 import { Container } from "@/components/container";
 import { IconMail, IconPhone } from "@/components/icons";
 import { SectionHeading } from "@/components/section-heading";
+import { useLanguage } from "@/components/language-provider";
 import { contact } from "@/lib/site";
 
 export function Contact() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -14,42 +19,50 @@ export function Contact() {
         <div>
           <SectionHeading
             id="contact-heading"
-            eyebrow="Contact"
-            title="Connect with SSK."
-            description="Speak with SSK about foundry and casting requirements, machine manufacturing, or material supply."
+            eyebrow={t.contact.eyebrow}
+            title={t.contact.title}
+            description={t.contact.description}
           />
           <dl className="mt-10 space-y-6 text-sm">
             <div>
-              <dt className="tracking-[0.16em] text-accent uppercase">Phone</dt>
+              <dt className="eyebrow font-medium text-accent">{t.contact.phone}</dt>
               <dd className="mt-1 text-base text-navy">
-                <a href={contact.phone.href} className="transition-colors hover:text-accent">
+                <a
+                  href={contact.phone.href}
+                  className="font-medium transition-colors hover:text-accent"
+                  dir="ltr"
+                >
                   {contact.phone.label}
                 </a>
               </dd>
-              <dd className="text-muted">{contact.phone.note}</dd>
+              <dd className="text-muted">{t.contact.phoneNote}</dd>
             </div>
             <div>
-              <dt className="tracking-[0.16em] text-accent uppercase">Email</dt>
+              <dt className="eyebrow font-medium text-accent">{t.contact.email}</dt>
               <dd className="mt-1 text-base text-navy">
-                <a href={contact.email.href} className="transition-colors hover:text-accent">
+                <a
+                  href={contact.email.href}
+                  className="font-medium transition-colors hover:text-accent"
+                  dir="ltr"
+                >
                   {contact.email.label}
                 </a>
               </dd>
-              <dd className="text-muted">{contact.email.note}</dd>
+              <dd className="text-muted">{t.contact.emailNote}</dd>
             </div>
             <div>
-              <dt className="tracking-[0.16em] text-accent uppercase">Location</dt>
+              <dt className="eyebrow font-medium text-accent">{t.contact.location}</dt>
               <dd className="mt-1 text-base text-navy">
                 <a
                   href={contact.location.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="transition-colors hover:text-accent"
+                  className="font-medium transition-colors hover:text-accent"
                 >
-                  {contact.location.label}
+                  {t.contact.locationLabel}
                 </a>
               </dd>
-              <dd className="text-muted">{contact.location.note}</dd>
+              <dd className="text-muted">{t.contact.locationNote}</dd>
             </div>
           </dl>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -57,29 +70,29 @@ export function Contact() {
               href={contact.location.href}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center bg-navy px-5 py-3 text-sm text-paper transition-colors hover:bg-accent hover:text-navy"
+              className="inline-flex items-center justify-center bg-navy px-5 py-3 text-sm font-medium text-paper transition-colors hover:bg-accent hover:text-navy"
             >
-              View Location
+              {t.contact.viewLocation}
             </a>
             <a
               href={contact.phone.href}
-              className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm text-navy transition-colors hover:border-accent hover:text-accent"
+              className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm font-medium text-navy transition-colors hover:border-accent hover:text-accent"
             >
               <IconPhone />
-              Phone
+              <span dir="ltr">{contact.phone.label}</span>
             </a>
             <a
               href={contact.email.href}
-              className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm text-navy transition-colors hover:border-accent hover:text-accent"
+              className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm font-medium text-navy transition-colors hover:border-accent hover:text-accent"
             >
               <IconMail />
-              Email
+              <span dir="ltr">{contact.email.label}</span>
             </a>
           </div>
         </div>
         <div
           className="relative min-h-80 overflow-hidden border border-line bg-paper"
-          aria-label="SSK location map link"
+          aria-label={t.contact.mapTitle}
         >
           <div
             className="absolute inset-0 opacity-40"
@@ -91,22 +104,22 @@ export function Contact() {
           />
           <div className="absolute inset-8 border border-navy/10" />
           <div className="relative flex h-full min-h-80 flex-col items-center justify-center px-6 text-center">
-            <p className="text-xs tracking-[0.22em] text-accent uppercase">
-              Location
+            <p className="eyebrow text-xs font-medium text-accent">
+              {t.contact.location}
             </p>
             <p className="mt-3 font-display text-3xl text-navy">
-              SSK location
+              {t.contact.mapTitle}
             </p>
-            <p className="mt-3 max-w-xs text-sm leading-6 text-muted">
-              Open the supplied Google Maps link to view the SSK location.
+            <p className="mt-3 max-w-xs text-sm leading-7 text-muted">
+              {t.contact.mapDescription}
             </p>
             <a
               href={contact.location.href}
               target="_blank"
               rel="noreferrer"
-              className="mt-6 inline-flex border border-navy px-5 py-3 text-sm text-navy transition-colors hover:bg-navy hover:text-paper"
+              className="mt-6 inline-flex border border-navy px-5 py-3 text-sm font-medium text-navy transition-colors hover:bg-navy hover:text-paper"
             >
-              Open in Google Maps
+              {t.contact.openMaps}
             </a>
           </div>
         </div>

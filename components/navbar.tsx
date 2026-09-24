@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { IconClose, IconMenu } from "@/components/icons";
+import { LanguageToggle } from "@/components/language-toggle";
 import { Logo } from "@/components/logo";
-import { navItems } from "@/lib/site";
+import { useLanguage } from "@/components/language-provider";
+import { contact } from "@/lib/site";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -27,41 +30,47 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/95">
-      <div className="mx-auto flex h-[4.25rem] w-full max-w-6xl items-center justify-between px-6 sm:px-8">
+    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/95 backdrop-blur-sm">
+      <div className="mx-auto flex h-[4.5rem] w-full max-w-6xl items-center justify-between gap-4 px-6 sm:px-8">
         <Logo />
         <nav
-          className="hidden items-center gap-5 xl:gap-8 lg:flex"
-          aria-label="Primary"
+          className="hidden items-center gap-4 xl:gap-6 lg:flex"
+          aria-label={t.nav.primary}
         >
-          {navItems.map((item) => (
+          {t.nav.items.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-sm tracking-wide text-charcoal transition-colors hover:text-accent"
+              className="text-sm font-medium text-charcoal transition-colors hover:text-accent"
             >
               {item.label}
             </a>
           ))}
         </nav>
-        <a
-          href="tel:09214149469"
-          className="hidden border border-navy bg-navy px-4 py-2 text-sm tracking-wide text-paper transition-colors hover:border-accent hover:bg-accent lg:inline-flex"
-        >
-          Call SSK
-        </a>
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center border border-line text-navy lg:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen((value) => !value)}
-        >
-          <span className="sr-only">
-            {open ? "Close menu" : "Open menu"}
-          </span>
-          {open ? <IconClose /> : <IconMenu />}
-        </button>
+        <div className="hidden items-center gap-3 lg:flex">
+          <LanguageToggle />
+          <a
+            href={contact.phone.href}
+            className="inline-flex border border-navy bg-navy px-4 py-2 text-sm font-medium text-paper transition-colors hover:border-accent hover:bg-accent"
+          >
+            {t.cta.call}
+          </a>
+        </div>
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageToggle />
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center border border-line text-navy"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((value) => !value)}
+          >
+            <span className="sr-only">
+              {open ? t.nav.close : t.nav.open}
+            </span>
+            {open ? <IconClose /> : <IconMenu />}
+          </button>
+        </div>
       </div>
       {open ? (
         <div
@@ -70,24 +79,24 @@ export function Navbar() {
         >
           <nav
             className="mx-auto flex max-w-6xl flex-col gap-1 px-6 py-5 sm:px-8"
-            aria-label="Mobile"
+            aria-label={t.nav.mobile}
           >
-            {navItems.map((item) => (
+            {t.nav.items.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="py-3 text-base text-navy"
+                className="py-3 text-base font-medium text-navy"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
               </a>
             ))}
             <a
-              href="tel:09214149469"
-              className="mt-3 inline-flex items-center justify-center border border-navy bg-navy px-4 py-3 text-sm text-paper"
+              href={contact.phone.href}
+              className="mt-3 inline-flex items-center justify-center border border-navy bg-navy px-4 py-3 text-sm font-medium text-paper"
               onClick={() => setOpen(false)}
             >
-              Call SSK
+              {t.cta.call}
             </a>
           </nav>
         </div>

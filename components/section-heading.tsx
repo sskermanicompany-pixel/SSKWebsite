@@ -16,13 +16,13 @@ export function SectionHeading({
   return (
     <div className="max-w-2xl">
       {eyebrow ? (
-        <p className="mb-4 text-xs font-medium tracking-[0.22em] text-accent uppercase">
+        <p className="eyebrow mb-4 text-xs font-medium text-accent">
           {eyebrow}
         </p>
       ) : null}
       <h2
         id={id}
-        className={`font-display text-3xl leading-tight font-medium tracking-tight sm:text-4xl ${
+        className={`font-display text-3xl leading-tight tracking-tight sm:text-4xl ${
           invert ? "text-paper" : "text-navy"
         }`}
       >
@@ -30,7 +30,7 @@ export function SectionHeading({
       </h2>
       {description ? (
         <p
-          className={`mt-5 max-w-xl text-base leading-7 ${
+          className={`mt-5 max-w-xl text-base leading-8 ${
             invert ? "text-paper/70" : "text-muted"
           }`}
         >
