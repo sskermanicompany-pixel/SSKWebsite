@@ -119,6 +119,11 @@ html[lang="en"] .eyebrow {
   display: flex;
   width: max-content;
   animation: partners-marquee-rtl 36s linear infinite;
+  will-change: transform;
+}
+
+.partners-track > ul {
+  flex-shrink: 0;
 }
 
 .partners-marquee[data-direction="ltr"] .partners-track {

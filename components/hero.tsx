@@ -30,7 +30,7 @@ export function Hero({ image }: HeroProps) {
           loading="eager"
         />
       ) : null}
-      <div className="absolute inset-0 bg-navy/72" />
+      <div className="absolute inset-0 bg-navy/75" />
       <Container className="relative grid min-h-[34rem] items-center py-24 md:min-h-[40rem] md:py-32">
         <div className="max-w-3xl">
           <p className="eyebrow animate-fade-up text-xs font-medium text-accent">

@@ -17,7 +17,7 @@ export function Partners({ logos }: PartnersProps) {
     return null;
   }
 
-  const sequence = logos.length < 6 ? [...logos, ...logos, ...logos] : logos;
+  const sequence = [...logos, ...logos];
 
   return (
     <section

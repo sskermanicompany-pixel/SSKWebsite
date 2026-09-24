@@ -71,13 +71,13 @@ export const dictionaries = {
         {
           title: "ساخت دستگاه ماهیچه‌زن",
           description:
-            "ساخت دستگاه ماهیچه‌زن برای تولید در ریخته‌گری، شامل مدل‌های Gold Box و Hot Box.",
+            "ساخت دستگاه ماهیچه‌زن برای تولید در ریخته‌گری، شامل مدل‌های کولد باکس و هات باکس.",
         },
       ],
       machinesEyebrow: "دستگاه ماهیچه‌زن",
-      machinesTitle: "Gold Box و Hot Box",
+      machinesTitle: "کولد باکس و هات باکس",
       machinesDescription:
-        "اس‌اس‌کی دستگاه ماهیچه‌زن را در مدل‌های Gold Box و Hot Box تولید می‌کند.",
+        "اس‌اس‌کی دستگاه ماهیچه‌زن را در مدل‌های کولد باکس و هات باکس تولید می‌کند.",
       warrantyEyebrow: "ضمانت",
       warrantyTitle: "ضمانت ۶ ماهه شرکت",
       warrantyDescription:
@@ -266,13 +266,13 @@ export const dictionaries = {
         {
           title: "Core Shooter Machine Manufacturing",
           description:
-            "Manufacturing core shooter machines for foundry production, including Gold Box and Hot Box models.",
+            "Manufacturing core shooter machines for foundry production, including Cold box and Hot Box models.",
         },
       ],
       machinesEyebrow: "Core shooter machines",
-      machinesTitle: "Gold Box and Hot Box",
+      machinesTitle: "Cold box and Hot Box",
       machinesDescription:
-        "SSK manufactures core shooter machines in Gold Box and Hot Box models.",
+        "SSK manufactures core shooter machines in Cold box and Hot Box models.",
       warrantyEyebrow: "Warranty",
       warrantyTitle: "6-month company warranty",
       warrantyDescription:
