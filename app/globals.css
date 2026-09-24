@@ -84,6 +84,118 @@ html[lang="en"] .eyebrow {
   animation: fade-up 1s ease-out 0.22s both;
 }
 
+@keyframes partners-marquee-rtl {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes partners-marquee-ltr {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.partners-marquee {
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  background: var(--paper);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.partners-track {
+  display: flex;
+  width: max-content;
+  animation: partners-marquee-rtl 36s linear infinite;
+}
+
+.partners-marquee[data-direction="ltr"] .partners-track {
+  animation-name: partners-marquee-ltr;
+}
+
+@media (hover: hover) {
+  .partners-marquee:hover .partners-track {
+    animation-play-state: paused;
+  }
+}
+
+.blog-content > * + * {
+  margin-top: 1.15rem;
+}
+
+.blog-content h2,
+.blog-content h3 {
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+
+.blog-content h2 {
+  margin-top: 2rem;
+  font-size: 1.65rem;
+}
+
+.blog-content h3 {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.blog-content p,
+.blog-content li {
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.blog-content a {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.blog-content ul,
+.blog-content ol {
+  padding-inline-start: 1.25rem;
+}
+
+.blog-content ul {
+  list-style: disc;
+}
+
+.blog-content ol {
+  list-style: decimal;
+}
+
+.blog-content blockquote {
+  border-inline-start: 2px solid var(--accent);
+  padding-inline-start: 1rem;
+  color: var(--charcoal);
+}
+
+.admin-field {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 0.7rem 0.85rem;
+  font-size: 0.95rem;
+  color: var(--foreground);
+}
+
+.admin-field:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent) 55%, white);
+  outline-offset: 1px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -92,6 +204,10 @@ html[lang="en"] .eyebrow {
   .animate-fade-up,
   .animate-fade-up-delay,
   .animate-fade-up-delay-2 {
+    animation: none;
+  }
+
+  .partners-track {
     animation: none;
   }
 }

@@ -1,7 +1,28 @@
 export const site = {
   name: "SSK",
-  logo: "/images/logo/SSK-FA.png",
-};
+  logos: {
+    fa: "/images/logo/SSK-FA.png",
+    en: "/images/logo/SSK-EN.png",
+  },
+} as const;
+
+export function getSiteLogo(locale: keyof typeof site.logos) {
+  return site.logos[locale];
+}
+
+export function getSiteUrl() {
+  const url = process.env.SITE_URL?.replace(/\/$/, "");
+  if (url) {
+    return url;
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  return "http://localhost:3000";
+}
 
 export const contact = {
   phone: {

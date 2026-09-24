@@ -8,12 +8,13 @@ import { LanguageProvider } from "@/components/language-provider";
 import { Navbar } from "@/components/navbar";
 import { SkipLink } from "@/components/skip-link";
 import { dictionaries } from "@/lib/i18n";
-import { site } from "@/lib/site";
+import { getSiteUrl, site } from "@/lib/site";
 import "./globals.css";
 
 const fa = dictionaries.fa;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: `${site.name} | ${fa.meta.tagline}`,
     template: `%s | ${site.name}`,
