@@ -1,15 +1,48 @@
 "use client";
 
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Logo } from "@/components/logo";
+import { IconArrowUp } from "@/components/icons";
 import { LanguageToggle } from "@/components/language-toggle";
 import { useLanguage } from "@/components/language-provider";
 import { contact, site } from "@/lib/site";
 
 export function Footer() {
   const { t } = useLanguage();
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    let frame = 0;
+
+    function updateVisibility() {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const scrollableDistance =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const shouldShow =
+          scrollableDistance > 0 && window.scrollY >= scrollableDistance / 2;
+
+        setShowBackToTop((visible) =>
+          visible === shouldShow ? visible : shouldShow,
+        );
+      });
+    }
+
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    window.addEventListener("resize", updateVisibility);
+    updateVisibility();
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateVisibility);
+      window.removeEventListener("resize", updateVisibility);
+    };
+  }, []);
 
   return (
-    <footer className="border-t border-paper/10 bg-navy text-paper">
+    <>
+      <footer className="border-t border-paper/10 bg-navy text-paper">
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 sm:px-8 md:grid-cols-4">
         <div className="md:col-span-2">
           <Logo inverted />
@@ -83,6 +116,17 @@ export function Footer() {
           <p>{t.footer.tagline}</p>
         </div>
       </div>
-    </footer>
+      </footer>
+      {showBackToTop ? (
+        <Link
+          href="/#home"
+          aria-label={t.footer.backToTop}
+          title={t.footer.backToTop}
+          className="animate-fade-up fixed bottom-6 end-6 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full border border-paper/20 bg-navy text-paper shadow-lg transition-[transform,background-color,color] duration-200 hover:-translate-y-1 hover:bg-accent hover:text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
+        >
+          <IconArrowUp className="h-5 w-5" />
+        </Link>
+      ) : null}
+    </>
   );
 }

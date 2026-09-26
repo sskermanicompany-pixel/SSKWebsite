@@ -127,3 +127,18 @@ export function IconClose({ className = "h-5 w-5" }: IconProps) {
     </svg>
   );
 }
+
+export function IconArrowUp({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      aria-hidden="true"
+    >
+      <path d="M12 19V5M6 11l6-6 6 6" />
+    </svg>
+  );
+}

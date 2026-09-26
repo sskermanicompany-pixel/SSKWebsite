@@ -194,6 +194,7 @@ export const dictionaries = {
       contact: "تماس",
       rights: "تمامی حقوق محفوظ است.",
       tagline: "راهکارهای ریخته‌گری اس‌اس‌کی",
+      backToTop: "بازگشت به بالای صفحه",
     },
     meta: {
       tagline: "راهکارهای ریخته‌گری با دقت صنعتی",
@@ -388,6 +389,7 @@ export const dictionaries = {
       contact: "Contact",
       rights: "All rights reserved.",
       tagline: "Foundry solutions by SSK",
+      backToTop: "Back to top",
     },
     meta: {
       tagline: "Foundry solutions with industrial precision",
