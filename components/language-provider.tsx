@@ -6,9 +6,10 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
+import { usePathname } from "next/navigation";
 import {
   defaultLocale,
   dictionaries,
@@ -17,6 +18,7 @@ import {
 } from "@/lib/i18n";
 
 const STORAGE_KEY = "ssk-locale";
+const LOCALE_CHANGE_EVENT = "ssk-locale-change";
 
 type LanguageContextValue = {
   locale: Locale;
@@ -27,6 +29,20 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
+function subscribeToLocaleChanges(onChange: () => void) {
+  window.addEventListener("storage", onChange);
+  window.addEventListener(LOCALE_CHANGE_EVENT, onChange);
+  return () => {
+    window.removeEventListener("storage", onChange);
+    window.removeEventListener(LOCALE_CHANGE_EVENT, onChange);
+  };
+}
+
+function getStoredLocale(): Locale {
+  const stored = window.localStorage.getItem(STORAGE_KEY);
+  return stored === "en" || stored === "fa" ? stored : defaultLocale;
+}
+
 function applyDocumentLocale(locale: Locale) {
   const dir = locale === "fa" ? "rtl" : "ltr";
   document.documentElement.lang = locale;
@@ -34,18 +50,24 @@ function applyDocumentLocale(locale: Locale) {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(defaultLocale);
+  const storedLocale = useSyncExternalStore(
+    subscribeToLocaleChanges,
+    getStoredLocale,
+    () => defaultLocale,
+  );
+  const pathname = usePathname();
+  const routeLocale = /^\/(fa|en)(?:\/|$)/.exec(pathname)?.[1] as
+    | Locale
+    | undefined;
+  const locale = routeLocale ?? storedLocale;
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    const next = stored === "en" || stored === "fa" ? stored : defaultLocale;
-    setLocaleState(next);
-    applyDocumentLocale(next);
-  }, []);
+    applyDocumentLocale(locale);
+  }, [locale]);
 
   const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
     window.localStorage.setItem(STORAGE_KEY, next);
+    window.dispatchEvent(new Event(LOCALE_CHANGE_EVENT));
     applyDocumentLocale(next);
   }, []);
 

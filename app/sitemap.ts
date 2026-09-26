@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/blog";
+import { locales } from "@/lib/i18n";
+import { getServiceHref, getServicePageEntries } from "@/lib/services-navigation";
 import { getSiteUrl } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -7,6 +9,8 @@ export const dynamic = "force-dynamic";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = getSiteUrl();
   const posts = await getPublishedPosts();
+  const services = getServicePageEntries();
+  const updatedAt = new Date();
 
   return [
     {
@@ -27,5 +31,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    ...locales.flatMap((locale) =>
+      services.map(({ segments }) => ({
+        url: `${siteUrl}${getServiceHref(locale, segments)}`,
+        lastModified: updatedAt,
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      })),
+    ),
   ];
 }

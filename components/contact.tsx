@@ -26,15 +26,17 @@ export function Contact() {
           <dl className="mt-10 space-y-6 text-sm">
             <div>
               <dt className="eyebrow font-medium text-accent">{t.contact.phone}</dt>
-              <dd className="mt-1 text-base text-navy">
-                <a
-                  href={contact.phone.href}
-                  className="font-medium transition-colors hover:text-accent"
-                  dir="ltr"
-                >
-                  {contact.phone.label}
-                </a>
-              </dd>
+              {contact.phones.map((phone) => (
+                <dd key={phone.label} className="mt-1 text-base text-navy">
+                  <a
+                    href={phone.href}
+                    className="font-medium transition-colors hover:text-accent"
+                    dir="ltr"
+                  >
+                    {phone.label}
+                  </a>
+                </dd>
+              ))}
               <dd className="text-muted">{t.contact.phoneNote}</dd>
             </div>
             <div>
@@ -74,13 +76,16 @@ export function Contact() {
             >
               {t.contact.viewLocation}
             </a>
-            <a
-              href={contact.phone.href}
-              className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm font-medium text-navy transition-colors hover:border-accent hover:text-accent"
-            >
-              <IconPhone />
-              <span dir="ltr">{contact.phone.label}</span>
-            </a>
+            {contact.phones.map((phone) => (
+              <a
+                key={phone.label}
+                href={phone.href}
+                className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm font-medium text-navy transition-colors hover:border-accent hover:text-accent"
+              >
+                <IconPhone />
+                <span dir="ltr">{phone.label}</span>
+              </a>
+            ))}
             <a
               href={contact.email.href}
               className="inline-flex items-center justify-center gap-2 border border-line px-5 py-3 text-sm font-medium text-navy transition-colors hover:border-accent hover:text-accent"
@@ -92,36 +97,17 @@ export function Contact() {
         </div>
         <div
           className="relative min-h-80 overflow-hidden border border-line bg-paper"
-          aria-label={t.contact.mapTitle}
         >
-          <div
-            className="absolute inset-0 opacity-40"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, #dcd6cc 1px, transparent 1px), linear-gradient(to bottom, #dcd6cc 1px, transparent 1px)",
-              backgroundSize: "28px 28px",
-            }}
+          <iframe
+            src={contact.location.href}
+            title={t.contact.mapTitle}
+            width="600"
+            height="450"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+            className="absolute inset-0 h-full w-full border-0"
           />
-          <div className="absolute inset-8 border border-navy/10" />
-          <div className="relative flex h-full min-h-80 flex-col items-center justify-center px-6 text-center">
-            <p className="eyebrow text-xs font-medium text-accent">
-              {t.contact.location}
-            </p>
-            <p className="mt-3 font-display text-3xl text-navy">
-              {t.contact.mapTitle}
-            </p>
-            <p className="mt-3 max-w-xs text-sm leading-7 text-muted">
-              {t.contact.mapDescription}
-            </p>
-            <a
-              href={contact.location.href}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 inline-flex border border-navy px-5 py-3 text-sm font-medium text-navy transition-colors hover:bg-navy hover:text-paper"
-            >
-              {t.contact.openMaps}
-            </a>
-          </div>
         </div>
       </Container>
     </section>

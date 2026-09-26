@@ -39,15 +39,17 @@ export function Footer() {
             {t.footer.contact}
           </p>
           <ul className="mt-4 space-y-2 text-sm text-paper/80">
-            <li>
-              <a
-                href={contact.phone.href}
-                className="transition-colors hover:text-accent"
-                dir="ltr"
-              >
-                {contact.phone.label}
-              </a>
-            </li>
+            {contact.phones.map((phone) => (
+              <li key={phone.label}>
+                <a
+                  href={phone.href}
+                  className="transition-colors hover:text-accent"
+                  dir="ltr"
+                >
+                  {phone.label}
+                </a>
+              </li>
+            ))}
             <li>
               <a
                 href={contact.email.href}
