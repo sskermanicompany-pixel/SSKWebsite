@@ -1,13 +1,8 @@
 import { readdirSync } from "node:fs";
 import path from "node:path";
+import { partners, type Partner } from "@/data/partners";
 
 const IMAGE_EXT = /\.(jpe?g|png|webp|gif|svg)$/i;
-
-export type PartnerLogo = {
-  src: string;
-  filename: string;
-  alt: string;
-};
 
 function labelFromFilename(filename: string) {
   return filename
@@ -16,19 +11,26 @@ function labelFromFilename(filename: string) {
     .trim();
 }
 
-export function getPartnerLogos(): PartnerLogo[] {
+function unlistedPartners(): Partner[] {
   const dir = path.join(process.cwd(), "public", "images", "clients");
+  const listed = new Set(partners.map((partner) => partner.logo));
 
   try {
     return readdirSync(dir)
       .filter((file) => IMAGE_EXT.test(file))
       .sort((a, b) => a.localeCompare(b))
-      .map((filename) => ({
-        filename,
-        src: `/images/clients/${filename}`,
-        alt: labelFromFilename(filename),
+      .map((filename) => `/images/clients/${filename}`)
+      .filter((src) => !listed.has(src))
+      .map((src) => ({
+        name: labelFromFilename(path.basename(src)),
+        logo: src,
+        website: "",
       }));
   } catch {
     return [];
   }
+}
+
+export function getPartners(): Partner[] {
+  return [...partners, ...unlistedPartners()];
 }

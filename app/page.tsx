@@ -9,12 +9,12 @@ import { Projects } from "@/components/projects";
 import { Services } from "@/components/services";
 import { getPublishedPosts } from "@/lib/blog";
 import { getGalleryImages } from "@/lib/gallery";
-import { getPartnerLogos } from "@/lib/partners";
+import { getPartners } from "@/lib/partners";
 
 export default async function Home() {
   const images = getGalleryImages();
   const heroImage = images.at(-1) ?? images[0];
-  const partners = getPartnerLogos();
+  const partners = getPartners();
   const posts = await getPublishedPosts();
 
   return (
@@ -22,7 +22,7 @@ export default async function Home() {
       <Hero image={heroImage} />
       <About />
       <Services images={images} />
-      <Partners logos={partners} />
+      <Partners partners={partners} />
       <Projects images={images} />
       <Gallery images={images} />
       <BlogPreview posts={posts} />
