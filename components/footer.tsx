@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/logo";
 import { IconArrowUp } from "@/components/icons";
@@ -118,14 +117,15 @@ export function Footer() {
       </div>
       </footer>
       {showBackToTop ? (
-        <Link
-          href="/#home"
+        <button
+          type="button"
           aria-label={t.footer.backToTop}
           title={t.footer.backToTop}
+          onClick={() => window.scrollTo({ top: 0, behavior: "auto" })}
           className="animate-fade-up fixed bottom-6 end-6 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full border border-paper/20 bg-navy text-paper shadow-lg transition-[transform,background-color,color] duration-200 hover:-translate-y-1 hover:bg-accent hover:text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent motion-reduce:transition-none"
         >
           <IconArrowUp className="h-5 w-5" />
-        </Link>
+        </button>
       ) : null}
     </>
   );
